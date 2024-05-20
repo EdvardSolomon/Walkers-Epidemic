@@ -1,0 +1,20 @@
+file(GLOB SRCS
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/*"
+)
+message(STATUS "SRCS = ${SRCS}")
+
+# message(STATUS "GLFW_LIBRARY = ${GLFW_LIBRARY}")
+# message(STATUS "CMAKE_SOURCE_DIR = ${CMAKE_SOURCE_DIR}")
+# message(STATUS "CMAKE_BINARY_DIR = ${CMAKE_BINARY_DIR}")
+# message(STATUS "CMAKE_CURRENT_SOURCE_DIR = ${CMAKE_CURRENT_SOURCE_DIR}")
+add_executable(terrain_2 ${SRCS})
+target_link_libraries(terrain_2 ${GLAD_LIBRARY} ${GLFW_LIBRARY} ${IMGUI_LIBRARY})
+
+# Resources
+set(SOURCE_RESOURCES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/resources)
+set(TARGET_RESOURCES_DIR ${CMAKE_CURRENT_BINARY_DIR}/resources)
+add_custom_command(
+    TARGET terrain_2 POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${SOURCE_RESOURCES_DIR} ${TARGET_RESOURCES_DIR}
+)

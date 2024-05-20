@@ -1,0 +1,8 @@
+# Ignore directories
+third_party/
+build/
+.vscode/
+.cache/
+
+# Allow only the apps directory
+!/apps/
