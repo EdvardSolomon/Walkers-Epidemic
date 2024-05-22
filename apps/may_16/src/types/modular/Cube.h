@@ -13,6 +13,7 @@ public:
     void CleanUp();
     bool PointIsInsideCube(glm::vec3 point);
     glm::vec3 getPosition() const { return position; }
+    RenderItem3D GetRenderItem();
 
 private:
     std::vector<Vertex> vertices;
@@ -21,4 +22,5 @@ private:
     glm::vec3 position;
     float size;
     int materialIndex;
+    RenderItem3D renderItem;
 };

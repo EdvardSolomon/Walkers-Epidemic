@@ -5,6 +5,9 @@
 # Engine backend files
 set(ENGINE_BACKEND_SRCS
     src/engine_backend/EngineBackend.cpp
+    src/engine_backend/GL_EngineBackend.cpp
+    src/engine_backend/GL_Renderer.cpp
+    src/engine_backend/types/GL_shader.cpp
 )
 
 # Renderer files

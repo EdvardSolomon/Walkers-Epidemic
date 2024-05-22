@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 #include "../core/input/Input.h"
+#include "GL_EngineBackend.h"
+#include "GL_Renderer.h"
 
 namespace EngineBackend {
     GLFWwindow* _window = NULL;
@@ -63,29 +65,10 @@ namespace EngineBackend {
         // AssetManager::FindAssetPaths();
         
         glfwMakeContextCurrent(_window);
-        // OpenGLBackEnd::InitMinimum();
-        // OpenGLRenderer::InitMinimum();
+        OpenGLBackEnd::InitMinimum();
+        OpenGLRenderer::InitMinimum();
         // Renderer_OLD::InitMinimumGL(); 
         // glClipControl(GL_LOWER_LEFT, GL_ZERO_TO_ONE);
-
-        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-            std::cout << "Failed to initialize GLAD\n";
-            return;
-        }
-
-        // OpenGL initial setup
-        GLint major, minor;
-        glGetIntegerv(GL_MAJOR_VERSION, &major);
-        glGetIntegerv(GL_MINOR_VERSION, &minor);
-        const GLubyte* vendor = glGetString(GL_VENDOR);
-        const GLubyte* renderer = glGetString(GL_RENDERER);
-        std::cout << "\nGPU: " << renderer << "\n";
-        std::cout << "GL version: " << major << "." << minor << "\n\n";
-
-        int flags;
-        glGetIntegerv(GL_CONTEXT_FLAGS, &flags);
-
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
         // AssetManager::LoadFont();
 

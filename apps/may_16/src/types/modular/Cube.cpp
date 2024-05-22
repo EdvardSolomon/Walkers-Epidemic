@@ -107,3 +107,15 @@ bool Cube::PointIsInsideCube(glm::vec3 point) {
             point.y >= min.y && point.y <= max.y &&
             point.z >= min.z && point.z <= max.z);
 }
+
+RenderItem3D Cube::GetRenderItem() {
+    renderItem.modelMatrix = glm::translate(glm::mat4(1.0f), position);
+    renderItem.inverseModelMatrix = glm::inverse(renderItem.modelMatrix);
+    renderItem.meshIndex = 0;  // Индекс меша, который будет использоваться для этого куба
+    renderItem.baseColorTextureIndex = 0;  // Индекс текстуры, если используется
+    renderItem.normalTextureIndex = 0;  // Индекс нормальной текстуры, если используется
+    renderItem.rmaTextureIndex = 0;  // Индекс текстуры RMA, если используется
+    renderItem.vertexOffset = 0;  // Смещение вершины
+    renderItem.indexOffset = 0;  // Смещение индекса
+    return renderItem;
+}

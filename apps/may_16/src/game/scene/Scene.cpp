@@ -69,6 +69,18 @@ namespace Scene {
     // glBindVertexArray(0);
     }
 
+
+    std::vector<RenderItem3D> GetAllRenderItems() {
+
+        std::vector<RenderItem3D> renderItems;
+
+        for (Cube& cube : Scene::_cubes) {
+            renderItems.push_back(cube.GetRenderItem());
+        }
+
+        return renderItems;
+    }
+
     void CleanUp() {
         _cubes.clear();
     }

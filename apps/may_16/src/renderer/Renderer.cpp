@@ -1,6 +1,8 @@
 #include "Renderer.h"
 #include <vector>
 #include <string>
+#include "../game/scene/Scene.h"
+#include "../engine_backend/GL_Renderer.h"
 #include "../engine_backend/EngineBackend.h"
 #include "../renderer/TextBlitter.h"
 #include "../renderer/RenderData.h"
@@ -25,12 +27,6 @@ void Renderer::RenderFrame() {
     glfwSwapBuffers(EngineBackend::GetWindowPointer());
 }
 
-void Renderer::Init() {
-    // Инициализация заглушек для TextBlitter
-    TextBlitter::InitializeStubTextures();
-}
-
-
 std::vector<RenderItem2D> CreateLoadingScreenRenderItems() {
     // Example loading screen render items
     std::string text = "Loading...";
@@ -49,8 +45,7 @@ std::vector<RenderItem2D> CreateRenderItems2D() {
 
 std::vector<RenderItem3D> CreateRenderItems3D() {
     // Example 3D render items
-    std::vector<RenderItem3D> renderItems;
-    // Add items to renderItems as needed
+    std::vector<RenderItem3D> renderItems = Scene::GetAllRenderItems();
     return renderItems;
 }
 
@@ -72,6 +67,9 @@ RenderData CreateRenderData() {
     renderData.renderDebugLines = false; // Example: no debug lines
     renderData.playerIndex = 0; // Example: single player
     renderData.cameraData = CreateCameraData();
+    
+    std::vector<RenderItem3D> geometryRenderItems = CreateRenderItems3D();
+
     renderData.renderItems2D = CreateRenderItems2D();
     renderData.renderItems2DHiRes = std::vector<RenderItem2D>(); // Example: no hi-res items
     renderData.blitDstCoords = BlitDstCoords{0, 0, 800, 600}; // Example size
@@ -87,10 +85,20 @@ RenderData CreateRenderData() {
     return renderData;
 }
 
-void RenderGame(RenderData& renderData) {}
+void RenderGame(RenderData& renderData) {
+    OpenGLRenderer::RenderGame(renderData);
+}
 
 void Renderer::RenderLoadingScreen() {
     std::vector<RenderItem2D> renderItems = CreateLoadingScreenRenderItems();
+}
+
+void ResizeRenderTargets() {
+
+    int width = PRESENT_WIDTH;
+    int height = PRESENT_HEIGHT;
+
+    // OpenGLRenderer::CreatePlayerRenderTargets(width, height);
 }
 
 void Renderer::HotloadShaders() {}

@@ -1,6 +1,6 @@
 #pragma once
-#include "../../Common.h"
-#include "../../Renderer/RendererCommon.h"
+#include "../Common.h"
+#include "../renderer/RendererCommon.h"
 
 namespace OpenGLBackEnd {
 

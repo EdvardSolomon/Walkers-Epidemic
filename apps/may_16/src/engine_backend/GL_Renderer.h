@@ -1,6 +1,6 @@
 #pragma once
-#include "../../Renderer/RenderData.h"
-#include "../../Renderer/RendererCommon.h"
+#include "../renderer/RenderData.h"
+#include "../renderer/RendererCommon.h"
 
 namespace OpenGLRenderer {
 

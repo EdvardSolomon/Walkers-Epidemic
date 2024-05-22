@@ -33,6 +33,8 @@ namespace Game {
         double deltaTime = _thisFrame - _lastFrame;
         _deltaTimeAccumulator += deltaTime;
 
+        std::cout << "Current Time: " << _thisFrame << " s, Delta Time: " << deltaTime << " s" << std::endl;
+
         Scene::Update(deltaTime);
     }
 
