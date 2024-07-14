@@ -7,6 +7,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -static -static-libgcc -stati
 
 add_definitions(-DUNICODE -D_UNICODE)
 
+set(BABYMA_DLL ${CMAKE_SOURCE_DIR}/build/apps/babyma/libbabymad.dll)
+
 set(GLFW_LIBRARY ${CMAKE_SOURCE_DIR}/third_party/glfw/build/src/libglfw3.a)
 set(GLAD_LIBRARY ${CMAKE_SOURCE_DIR}/third_party/glad/build/libglad.a)
 set(IMGUI_LIBRARY ${CMAKE_SOURCE_DIR}/third_party/imgui/build/libimgui.a)

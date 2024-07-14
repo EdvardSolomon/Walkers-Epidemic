@@ -1,5 +1,2 @@
-# add_subdirectory(terrain_0)
-# add_subdirectory(terrain_1)
-# add_subdirectory(terrain_2)
-# add_subdirectory(terrain_3)
-add_subdirectory(may_16)
+add_subdirectory(babyma)
+add_subdirectory(sandbox)
